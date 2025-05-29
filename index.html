@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="estilos/estilo.css" rel="stylesheet" type="text/css"/>
+  <style>
+    img {
+      width: 200px;
+      height: 150px;
+    }
+    pre {
+    background: #2d2d2d;
+    color: #ccc;
+    padding: 1em;
+    overflow-x: auto;
+    border-radius: 4px;
+    }
+    code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    line-height: 1.4;
+    }
+    a.repo-link {
+    display: inline-block;
+    margin-top: 0.5em;
+    color: #0366d6;
+    text-decoration: none;
+    }
+    a.repo-link:hover {
+    text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <h1>BoiaSmart</h1> <br />
@@ -37,19 +64,8 @@
    <h2>Aplicativos e Plataforma:</h2>
     <ul>
         <li>Arduino IDE</li>
-        <li>ChatGPT</li>
         <li>Tinkercad</li>
-        <li></li>
-        <li></li>
-        <li></li>
     </ul>
-
-   <h2>Passo a passo:</h2> OBS:ARTUR FAZER O PASSO A PASSO
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul> 
 
    <h2>Problemas enfrentados e lições aprendidas</h2>
     <table>
@@ -72,5 +88,92 @@
             <td>Solicitamos ao nosso tutor que realizasse a troca das peças.</td>
         </tr>
     </table>
+
+    <h2>Passo a Passo</h2>
+    <table>
+        <tr>
+            <img src="assets/passo 1 foto.jpeg" >
+            <img src="assets/passo 1 tinkercad.jpeg">
+            <p>Passo 1</p>   
+        </tr>
+        <tr>
+            <img src="assets/passo 2 foto.jpeg" >
+            <img src="assets/passo 2 tinkercad.jpeg" >
+            <p>
+                Passo 2</p> 
+        </tr>
+        <tr>
+            <img src="assets/passo 3 foto.jpeg">
+            <img src="assets/passo 3 tinkercad.jpeg">
+            <p>Passo 3</p>
+        </tr>
+        <tr>
+            <img src="assets/passo 4 foto.jpeg" >
+            <img src="assets/passo 4 tinkercad.jpeg" >
+            <p>Passo 4</p>
+        </tr>
+        <tr>
+            <img src="assets/passo 5 foto.jpeg">
+            <img src="assets/passo 5 tinkercad.jpeg" >
+            <p>Passo 5</p>
+        </tr>
+        <tr>
+            <img src="assets/passo 6 foto.jpeg" >
+            <img src="assets/passo 6 tinkercad.jpeg" >
+            <p>Passo 6</p>
+        </tr>
+    </table>
+    <h2>Video Youtube</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZzMh8BErU5A?si=OUqiKAvzOQ-W6qUp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <h2>Download do Projeto</h2>
+    <a href="assets/arduino-sketch.jpeg" download>Clique Aqui</a>
+
+    <h2>Codigo</h2>
+    <pre><code class="language-cpp">
+      #define SensorBoia1 2
+      #define SensorBoia2 5 
+      #define LedVermelho 12 
+      #define LedAmarelo 10
+      #define LedVerde 8 
+
+      int leiturasensor1; 
+      int leiturasensor2; 
+
+      void setup() {
+        Serial.begin(9600); 
+        pinMode(SensorBoia1, INPUT);
+        pinMode(SensorBoia2, INPUT); 
+        pinMode(LedVermelho, OUTPUT);
+        pinMode(LedAmarelo, OUTPUT);
+        pinMode(LedVerde, OUTPUT); 
+      }
+
+      void loop() {
+        leiturasensor1 = digitalRead(SensorBoia1); 
+        leiturasensor2 = digitalRead(SensorBoia2);
+        Serial.println(leiturasensor1);
+        Serial.println(leiturasensor2);
+
+        if (leiturasensor1 == HIGH && leiturasensor2 == HIGH) { 
+          Serial.println("Nível de água alto");
+          digitalWrite(LedVermelho, LOW);
+          digitalWrite(LedAmarelo, LOW);
+          digitalWrite(LedVerde, HIGH);
+        }
+        else if (leiturasensor1 == HIGH) {
+          Serial.println("Nível de água médio");
+          digitalWrite(LedVermelho, LOW);
+          digitalWrite(LedAmarelo, HIGH);
+          digitalWrite(LedVerde, LOW);
+        } else {
+          Serial.println("Nível de água baixo");
+          digitalWrite(LedVermelho, HIGH);
+          digitalWrite(LedAmarelo, LOW);
+          digitalWrite(LedVerde, LOW);
+        }
+          delay(300);
+      }
+  </code></pre>
 </body>
 </html>
